@@ -21,7 +21,7 @@ Vector::Vector(double coordinates[]){
 }
 
 float Vector::length() const {
-	return sqrt(x*x + y*y + z*z);
+	return std::sqrt(x*x + y*y + z*z);
 }
 
 void Vector::print() const {

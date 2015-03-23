@@ -53,16 +53,68 @@ void swap(float *x, float *y) {
 }
 
 void ex4() {
-	float a = 1;
+	float a = 8;
 	float b = 2;
-	cout << "Before swap: " << a << " and " << b << endl; swap(a,b);
-	cout << "After swap: " << a << " and " << b << endl;
+	cout << "Before swap:\t" << a << " and " << b << endl;
+	swap(a, b);
+	cout << "After swap:\t" << a << " and " << b << endl;
+}
+
+void ex5 (){
+	int a = 5;
+	int b = 6;
+	int* p = &a;
+	int* q = &b;
+	int **r = &p;
+	int **s = &q;
+	int c = 7;
+	*r = &c;
+	r = s;
+	**r = 8;
+	*s = &a;
+	*p = 9;
+	**s = 10;
+	cout << a << endl << b << endl << c << endl;
+}
+
+void pascalTriangle(unsigned size) {
+	unsigned triangle[size][size];
+	triangle[0][0] = triangle[1][0] = triangle[1][1] = 1;
+	
+	for (unsigned i = 0; i<size; ++i) {
+		for (unsigned j = 0; j<=i; ++j) {
+			if (j==0 || i==j) {
+				triangle[i][j] = 1;
+			} else {
+				triangle[i][j] = triangle[i-1][j] + triangle[i-1][j-1];
+			}
+			cout << triangle[i][j] << ' ';
+		}
+		cout << endl;
+	}
+}
+
+void pascalTriangle2(unsigned size) {
+	unsigned faculties[size];
+	faculties[0] = 1;
+	cout << 1 << endl;
+	for (unsigned i = 1; i<size; ++i) {
+		faculties[i] = faculties[i-1] * i;
+		for (unsigned j = 0; j<=i; ++j) {
+			cout << faculties[i] / (faculties[j]* faculties[i-j] ) << " ";
+		}
+		cout << endl;
+	}
 }
 
 int main(int argc, const char * argv[]) {
 	//ex2();
 	//ex3();
 	ex4();
+	//ex5();
+	
+//	pascalTriangle2(8);
+	
 	
     return 0;
 }
